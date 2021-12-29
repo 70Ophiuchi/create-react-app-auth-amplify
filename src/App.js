@@ -6,43 +6,6 @@ import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
-var api_key = ''
-
-var AWS = require('aws-sdk'),
-    region = "eu-central-1",
-    secretName = "SES_TEST_EMAIL-Key",
-    secret,
-    decodedBinarySecret;
-
-var client = new AWS.SecretsManager({
-    region: region
-});
-
-
-client.getSecretValue({SecretId: secretName}, function(err, data) {
-    if (err) {
-        if (err.code === 'DecryptionFailureException')
-            throw err;
-        else if (err.code === 'InternalServiceErrorException')
-            throw err;
-        else if (err.code === 'InvalidParameterException')
-            throw err;
-        else if (err.code === 'InvalidRequestException')
-            throw err;
-        else if (err.code === 'ResourceNotFoundException')
-            throw err;
-    }
-    else {
-        if ('SecretString' in data) {
-            secret = data.SecretString;
-            api_key = secret
-        } else {
-            let buff = new Buffer(data.SecretBinary, 'base64');
-            decodedBinarySecret = buff.toString('ascii');
-            api_key = decodedBinarySecret
-        }
-    } 
-});
 
 class App extends Component {
 
@@ -128,7 +91,7 @@ class App extends Component {
         </div>
         {this.fileData()}
 
-        <form action='https://2p3o8gk1eb.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL' id='lambda-data'>
+        <form action='https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL' id='lambda-data'>
 
             <label for="templateName">Template Name:</label>
             <input type="text" name="templateName" placeholder="Template Name"/>
@@ -149,64 +112,3 @@ class App extends Component {
     );
   }
 }
-
-
-/**
- * Helper function for POSTing data as JSON with fetch.
- *
- * @param {Object} options
- * @param {string} options.url - URL to POST data to
- * @param {FormData} options.formData - `FormData` instance
- * @return {Object} - Response body from URL that was POSTed to
- */
- async function postFormDataAsJson({ url, formData }) {
-	const plainFormData = Object.fromEntries(formData.entries());
-	const formDataJsonString = JSON.stringify(plainFormData);
-
-	const fetchOptions = {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-      'x-api-key': api_key
-		},
-		body: formDataJsonString,
-	};
-
-	const response = await fetch(url, fetchOptions);
-
-	if (!response.ok) {
-		const errorMessage = await response.text();
-		throw new Error(errorMessage);
-	}
-
-	return response.json();
-}
-
-/**
- * Event handler for a form submit event.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event
- *
- * @param {SubmitEvent} event
- */
-async function handleFormSubmit(event) {
-	event.preventDefault();
-
-	const form = event.currentTarget;
-	const url = form.action;
-
-	try {
-		const formData = new FormData(form);
-		const responseData = await postFormDataAsJson({ url, formData });
-
-		console.log({ responseData });
-	} catch (error) {
-		console.error(error);
-	}
-}
-
-const exampleForm = document.getElementById("lambda-data");
-exampleForm.addEventListener("submit", handleFormSubmit);
-
-
-export default withAuthenticator(App);

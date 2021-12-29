@@ -72,7 +72,9 @@ class App extends Component {
   
   render() {
     return (
-      <div>
+      <div className="App">
+        <AmplifySignOut />
+
         <h1>
             File Upload
         </h1>
@@ -86,13 +88,7 @@ class App extends Component {
             </button>
         </div>
         {this.fileData()}
-    </div>
-    )
-  }
-  render() {
-    return (
-      <div className="App">
-        <AmplifySignOut />
+
       </div>      
     );
   }

@@ -6,9 +6,7 @@ import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
-
 class App extends Component {
-
 	state = {
 
     selectedFile: null
@@ -91,24 +89,27 @@ class App extends Component {
         </div>
         {this.fileData()}
 
-        <form action='https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL' id='lambda-data'>
+        <form action="https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL" method="POST">
 
-            <label for="templateName">Template Name:</label>
-            <input type="text" name="templateName" placeholder="Template Name"/>
+            <label for="TemplateName">Template Name:</label>
+            <input type="text" name="TemplateName" placeholder="Template Name"/>
 
-            <label for="QueryRange">Query Range:</label>
-            <input type="number" name="QueryRange" placeholder="Query Range"/>
+            <label for="queryRange">Query Range:</label>
+            <input type="number" name="queryRange" placeholder="Query Range"/>
 
             <label for="campaignID">Campaign ID:</label>
             <input type="text" name="campaignID" placeholder="Campaign ID"/>
 
-            <label for="testEmail">Test Emails (Seperated by Commas):</label>
-            <input type="text" name="testEmail" placeholder="Test Emails"/>
+            <label for="testEmails">Test Emails (Seperated by Commas):</label>
+            <input type="text" name="testEmails" placeholder="Test Emails"/>
 
             <button type="submit">Submit</button>
-
         </form>
       </div>   
     );
   }
 }
+
+export default withAuthenticator(App);
+
+

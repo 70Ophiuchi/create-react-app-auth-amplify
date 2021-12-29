@@ -92,16 +92,13 @@ class App extends Component {
         <form action="https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL" method="POST">
 
             <label for="TemplateName">Template Name:</label>
-            <input type="text" name="TemplateName" placeholder="Template Name"/>
+            <input type="text" name="TemplateName" placeholder="Template Name"/> <br />
 
             <label for="queryRange">Query Range:</label>
-            <input type="number" name="queryRange" placeholder="Query Range"/>
+            <input type="number" name="queryRange" placeholder="Query Range"/> <br />
 
             <label for="campaignID">Campaign ID:</label>
             <input type="text" name="campaignID" placeholder="Campaign ID"/>
-
-            <label for="testEmails">Test Emails (Seperated by Commas):</label>
-            <input type="text" name="testEmails" placeholder="Test Emails"/>
 
             <button type="submit">Submit</button>
         </form>

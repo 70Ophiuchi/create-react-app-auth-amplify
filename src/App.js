@@ -89,19 +89,20 @@ class App extends Component {
         </div>
         {this.fileData()}
 
-        <form action="https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL" method="POST">
+        <form action="https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL" method="POST" target='blank'>
 
             <label for="TemplateName">Template Name:</label>
-            <input type="text" name="TemplateName" placeholder="Template Name"/> <br />
+            <input type="text" name="TemplateName" placeholder="Template Name"/> <br /><br />
 
             <label for="queryRange">Query Range:</label>
-            <input type="number" name="queryRange" placeholder="Query Range"/> <br />
+            <input type="number" name="queryRange" placeholder="Query Range"/> <br /><br />
 
             <label for="campaignID">Campaign ID:</label>
             <input type="text" name="campaignID" placeholder="Campaign ID"/>
 
             <button type="submit">Submit</button>
         </form>
+
       </div>   
     );
   }

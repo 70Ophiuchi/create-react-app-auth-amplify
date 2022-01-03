@@ -9,6 +9,31 @@ Amplify.configure(aws_exports);
 
 class App extends Component {
 
+  handleSubmit = async (event) => {
+    event.preventDefault()
+  
+    const formdata = new FormData(event.target)
+  
+    const json = {}
+    formdata.forEach(function(value, prop){
+      json[prop] = value
+    })
+  
+    const formBody = Object.keys(json).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(json[key])).join('&')
+  
+    const response = await fetch("https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL", {
+      method: "POST",
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
+      body: formBody,
+    })
+      .then(response => {
+        alert(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
 	state = {
 
     selectedFile: null
@@ -20,30 +45,6 @@ class App extends Component {
     
     };
 
-    handleSubmit = async (event) => {
-      event.preventDefault()
-    
-      const formdata = new FormData(event.target)
-    
-      const json = {}
-      formdata.forEach(function(value, prop){
-        json[prop] = value
-      })
-    
-      const formBody = Object.keys(json).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(json[key])).join('&')
-    
-      const response = await fetch("https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL", {
-        method: "POST",
-        headers: {"Content-Type": "application/x-www-form-urlencoded"},
-        body: formBody,
-      })
-        .then(response => {
-          console.log(response)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    }
 
     onFileUpload = () => {
     
@@ -116,7 +117,7 @@ class App extends Component {
         </div>
         {this.fileData()}
 
-        <form onSubmit='{this.handleSubmit}' method="POST" target='blank'>
+        <form onSubmit='{handleSubmit}' method="POST">
 
             <label for="TemplateName">Template Name:</label>
             <input type="text" name="TemplateName" placeholder="Template Name"/> <br /><br />

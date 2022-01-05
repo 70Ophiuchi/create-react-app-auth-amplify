@@ -6,10 +6,10 @@ import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
-
+var r = ''
 
 class App extends Component {  
-
+  
   handleSubmit = async (event) => {
     event.preventDefault()
   
@@ -46,7 +46,6 @@ class App extends Component {
             .join('');
           return hashHex;
         }
-        var r = ''
         hash(data.campaignID).then((hex) => r = hex); 
       })
       .catch(error => {

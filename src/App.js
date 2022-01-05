@@ -7,7 +7,8 @@ import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
 
-class App extends Component {
+
+class App extends Component {  
 
   handleSubmit = async (event) => {
     event.preventDefault()
@@ -27,14 +28,61 @@ class App extends Component {
       body: formBody,
     })
       .then(response => {
-        alert(response)
+        return response.json()
+      }).then(function (data){
+        var ff = document.getElementById("finalForm")
+        ff.setAttribute("APIKEY_ID", data.APIKEY_ID)
+        ff.setAttribute("templateName", data.templateName)
+        ff.setAttribute("QueryRange", data.QueryRange)
+        ff.setAttribute("campaignID", data.campaignID)
+        ff.setAttribute("X-Api-Key", data.API_KEY)
+
+        async function hash(string) {
+          const utf8 = new TextEncoder().encode(string);
+          const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          const hashHex = hashArray
+            .map((bytes) => bytes.toString(16).padStart(2, '0'))
+            .join('');
+          return hashHex;
+        }
+        var r = ''
+        hash(data.campaignID).then((hex) => r = hex); 
       })
       .catch(error => {
         console.log(error)
       })
-  }
+    document.getElementById('submitForm').className = "hidden"
+    document.getElementById('finalForm').className = ""
+    }
 
-	state = {
+  handleSubmit_finalForm = async (event) => {
+    event.preventDefault()
+  
+    const formdata = new FormData(event.target)
+  
+    const json = {}
+    formdata.forEach(function(value, prop){
+      json[prop] = value
+    })
+  
+    const response = await fetch("https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL", {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "X-Api-Key": json['X-Api-Key']},
+      body: json,
+    })
+      .then(response => {
+        return response.json()
+      }).then(function (data){
+        console.log(data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    window.location.href = window.location.href;
+    }
+	
+    state = {
 
     selectedFile: null
     };
@@ -117,7 +165,7 @@ class App extends Component {
         </div>
         {this.fileData()}
 
-        <form onSubmit='{handleSubmit}' method="POST">
+        <form onSubmit={this.handleSubmit} method="POST" id='submitForm'>
 
             <label for="TemplateName">Template Name:</label>
             <input type="text" name="TemplateName" placeholder="Template Name"/> <br /><br />
@@ -129,6 +177,29 @@ class App extends Component {
             <input type="text" name="campaignID" placeholder="Campaign ID"/> <br /><br />
 
             <button type="submit">Submit</button>
+        </form>
+
+        <form onSubmit={this.handleSubmit_finalForm} method="POST" id='finalForm' class='hidden'>
+
+          <label for="finalCheck">Verification Code: {r}</label>
+          <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
+
+          <label style="display: hidden" for="APIKEY_ID">Template Name:</label>
+          <input style="display: hidden" type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
+
+          <label style="display: hidden" for="templateName">Template Name:</label>
+          <input style="display: hidden" type="text" name="templateName" placeholder="templateName"/> <br /><br />
+
+          <label style="display: hidden" for="QueryRange">Query Range:</label>
+          <input style="display: hidden" type="number" name="QueryRange" placeholder="QueryRange"/> <br /><br />
+
+          <label style="display: hidden" for="campaignID">Campaign ID:</label>
+          <input style="display: hidden" type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
+
+          <label style="display: hidden" for="X-Api-Key">Campaign ID:</label>
+          <input style="display: hidden" type="text" name="X-Api-Key" placeholder="X-Api-Key"/> <br /><br />
+
+          <button type="submit">Submit</button>
         </form>
 
       </div>   

@@ -183,20 +183,20 @@ class App extends Component {
           <label for="finalCheck">Verification Code: {r}</label>
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 
-          <label style="display: hidden" for="APIKEY_ID">Template Name:</label>
-          <input style="display: hidden" type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
+          <label style={{display: hidden}} for="APIKEY_ID">Template Name:</label>
+          <input style={{display: hidden}} type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
 
-          <label style="display: hidden" for="templateName">Template Name:</label>
-          <input style="display: hidden" type="text" name="templateName" placeholder="templateName"/> <br /><br />
+          <label style={{display: hidden}} for="templateName">Template Name:</label>
+          <input style={{display: hidden}} type="text" name="templateName" placeholder="templateName"/> <br /><br />
 
-          <label style="display: hidden" for="QueryRange">Query Range:</label>
-          <input style="display: hidden" type="number" name="QueryRange" placeholder="QueryRange"/> <br /><br />
+          <label style={{display: hidden}} for="QueryRange">Query Range:</label>
+          <input style={{display: hidden}} type="number" name="QueryRange" placeholder="QueryRange"/> <br /><br />
 
-          <label style="display: hidden" for="campaignID">Campaign ID:</label>
-          <input style="display: hidden" type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
+          <label style={{display: hidden}} for="campaignID">Campaign ID:</label>
+          <input style={{display: hidden}} type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
 
-          <label style="display: hidden" for="X-Api-Key">Campaign ID:</label>
-          <input style="display: hidden" type="text" name="X-Api-Key" placeholder="X-Api-Key"/> <br /><br />
+          <label style={{display: hidden}} for="X-Api-Key">Campaign ID:</label>
+          <input style={{display: hidden}} type="text" name="X-Api-Key" placeholder="X-Api-Key"/> <br /><br />
 
           <button type="submit">Submit</button>
         </form>

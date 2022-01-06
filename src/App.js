@@ -46,7 +46,9 @@ class App extends Component {
             .join('');
           return hashHex;
         }
-        hash(data.campaignID).then((hex) => r = hex); 
+        hash(data.campaignID).then((hex) => r = hex);
+
+        ff.firstChild.innerText = "Verification Code [ " + r + " ]: "
       })
       .catch(error => {
         alert("Request Failed: " + error)
@@ -183,20 +185,20 @@ class App extends Component {
           <label for="finalCheck">Verification Code: {r}</label>
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 
-          <label className='hidden' for="APIKEY_ID">APIKEY_ID:</label>
-          <input className='hidden' type="text" name="APIKEY_ID" placeholder="APIKEY_ID" disabled/> <br /><br />
+          <label for="APIKEY_ID">APIKEY_ID:</label>
+          <input type="text" name="APIKEY_ID" placeholder="APIKEY_ID" disabled/> <br /><br />
 
-          <label className='hidden' for="templateName">Template Name:</label>
-          <input className='hidden' type="text" name="templateName" placeholder="templateName" disabled/> <br /><br />
+          <label for="templateName">Template Name:</label>
+          <input type="text" name="templateName" placeholder="templateName" disabled/> <br /><br />
 
-          <label className='hidden' for="QueryRange">Query Range:</label>
-          <input className='hidden' type="number" name="QueryRange" placeholder="QueryRange" disabled/> <br /><br />
+          <label for="QueryRange">Query Range:</label>
+          <input type="number" name="QueryRange" placeholder="QueryRange" disabled/> <br /><br />
 
-          <label className='hidden' for="campaignID">Campaign ID:</label>
-          <input className='hidden' type="text" name="campaignID" placeholder="campaignID" disabled/> <br /><br />
+          <label for="campaignID">Campaign ID:</label>
+          <input type="text" name="campaignID" placeholder="campaignID" disabled/> <br /><br />
 
-          <label className='hidden' for="XApiKey">X-Api-Key:</label>
-          <input className='hidden' type="text" name="XApiKey" placeholder="X-Api-Key" disabled/> <br /><br />
+          <label for="XApiKey">X-Api-Key:</label>
+          <input type="text" name="XApiKey" placeholder="X-Api-Key" disabled/> <br /><br />
 
           <button type="submit">Submit</button>
         </form>

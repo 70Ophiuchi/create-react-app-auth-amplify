@@ -178,25 +178,25 @@ class App extends Component {
             <button type="submit">Submit</button>
         </form>
 
-        <form onSubmit={this.handleSubmit_finalForm} method="POST" id='finalForm' class='hidden'>
+        <form onSubmit={this.handleSubmit_finalForm} method="POST" id='finalForm' className='hidden'>
 
           <label for="finalCheck">Verification Code: {r}</label>
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 
-          <label style={{display: hidden}} for="APIKEY_ID">Template Name:</label>
-          <input style={{display: hidden}} type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
+          <label className='hidden' for="APIKEY_ID">Template Name:</label>
+          <input className='hidden' type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
 
-          <label style={{display: hidden}} for="templateName">Template Name:</label>
-          <input style={{display: hidden}} type="text" name="templateName" placeholder="templateName"/> <br /><br />
+          <label className='hidden' for="templateName">Template Name:</label>
+          <input className='hidden' type="text" name="templateName" placeholder="templateName"/> <br /><br />
 
-          <label style={{display: hidden}} for="QueryRange">Query Range:</label>
-          <input style={{display: hidden}} type="number" name="QueryRange" placeholder="QueryRange"/> <br /><br />
+          <label className='hidden' for="QueryRange">Query Range:</label>
+          <input className='hidden' type="number" name="QueryRange" placeholder="QueryRange"/> <br /><br />
 
-          <label style={{display: hidden}} for="campaignID">Campaign ID:</label>
-          <input style={{display: hidden}} type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
+          <label className='hidden' for="campaignID">Campaign ID:</label>
+          <input className='hidden' type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
 
-          <label style={{display: hidden}} for="X-Api-Key">Campaign ID:</label>
-          <input style={{display: hidden}} type="text" name="X-Api-Key" placeholder="X-Api-Key"/> <br /><br />
+          <label className='hidden' for="X-Api-Key">Campaign ID:</label>
+          <input className='hidden' type="text" name="X-Api-Key" placeholder="X-Api-Key"/> <br /><br />
 
           <button type="submit">Submit</button>
         </form>

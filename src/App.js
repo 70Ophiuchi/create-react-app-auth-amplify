@@ -49,7 +49,7 @@ class App extends Component {
         hash(data.campaignID).then((hex) => r = hex); 
       })
       .catch(error => {
-        console.log(error)
+        alert("Request Failed: " + error)
       })
     document.getElementById('submitForm').className = "hidden"
     document.getElementById('finalForm').className = ""
@@ -65,7 +65,7 @@ class App extends Component {
       json[prop] = value
     })
   
-    const response = await fetch("https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL", {
+    const response = await fetch("https://gf40yyred9.execute-api.eu-central-1.amazonaws.com/default/SES_SEND_EMAIL", {
       method: "POST",
       headers: {"Content-Type": "application/json", "X-Api-Key": json['XApiKey']},
       body: json,
@@ -76,7 +76,7 @@ class App extends Component {
         console.log(data)
       })
       .catch(error => {
-        alert(error)
+        alert("Request Failed: " + error)
       })
     window.location.href = window.location.href;
     }

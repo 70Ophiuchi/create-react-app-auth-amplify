@@ -31,11 +31,11 @@ class App extends Component {
         return response.json()
       }).then(function (data){
         var ff = document.getElementById("finalForm")
-        ff.setAttribute("APIKEY_ID", data.APIKEY_ID)
-        ff.setAttribute("templateName", data.templateName)
-        ff.setAttribute("QueryRange", data.QueryRange)
-        ff.setAttribute("campaignID", data.campaignID)
-        ff.setAttribute("X-Api-Key", data.API_KEY)
+        ff.APIKEY_ID.value = data.APIKEY_ID
+        ff.templateName.value = data.templateName
+        ff.QueryRange.value = data.QueryRange
+        ff.campaignID.value = data.campaignID
+        ff.XApiKey.value = data.API_KEY
 
         async function hash(string) {
           const utf8 = new TextEncoder().encode(string);
@@ -183,7 +183,7 @@ class App extends Component {
           <label for="finalCheck">Verification Code: {r}</label>
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 
-          <label className='hidden' for="APIKEY_ID">Template Name:</label>
+          <label className='hidden' for="APIKEY_ID">APIKEY_ID:</label>
           <input className='hidden' type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
 
           <label className='hidden' for="templateName">Template Name:</label>
@@ -195,8 +195,8 @@ class App extends Component {
           <label className='hidden' for="campaignID">Campaign ID:</label>
           <input className='hidden' type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
 
-          <label className='hidden' for="X-Api-Key">Campaign ID:</label>
-          <input className='hidden' type="text" name="X-Api-Key" placeholder="X-Api-Key"/> <br /><br />
+          <label className='hidden' for="XApiKey">X-Api-Key:</label>
+          <input className='hidden' type="text" name="XApiKey" placeholder="X-Api-Key"/> <br /><br />
 
           <button type="submit">Submit</button>
         </form>

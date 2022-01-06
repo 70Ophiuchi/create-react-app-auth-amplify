@@ -184,19 +184,19 @@ class App extends Component {
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 
           <label className='hidden' for="APIKEY_ID">APIKEY_ID:</label>
-          <input className='hidden' type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
+          <input className='hidden' type="text" name="APIKEY_ID" placeholder="APIKEY_ID" disabled/> <br /><br />
 
           <label className='hidden' for="templateName">Template Name:</label>
-          <input className='hidden' type="text" name="templateName" placeholder="templateName"/> <br /><br />
+          <input className='hidden' type="text" name="templateName" placeholder="templateName" disabled/> <br /><br />
 
           <label className='hidden' for="QueryRange">Query Range:</label>
-          <input className='hidden' type="number" name="QueryRange" placeholder="QueryRange"/> <br /><br />
+          <input className='hidden' type="number" name="QueryRange" placeholder="QueryRange" disabled/> <br /><br />
 
           <label className='hidden' for="campaignID">Campaign ID:</label>
-          <input className='hidden' type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
+          <input className='hidden' type="text" name="campaignID" placeholder="campaignID" disabled/> <br /><br />
 
           <label className='hidden' for="XApiKey">X-Api-Key:</label>
-          <input className='hidden' type="text" name="XApiKey" placeholder="X-Api-Key"/> <br /><br />
+          <input className='hidden' type="text" name="XApiKey" placeholder="X-Api-Key" disabled/> <br /><br />
 
           <button type="submit">Submit</button>
         </form>

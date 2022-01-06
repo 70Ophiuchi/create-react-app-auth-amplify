@@ -6,7 +6,6 @@ import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
-var r = ''
 
 class App extends Component {  
   
@@ -36,7 +35,8 @@ class App extends Component {
         ff.QueryRange.value = data.QueryRange
         ff.campaignID.value = data.campaignID
         ff.XApiKey.value = data.API_KEY
-
+        
+        let r = ''
         async function hash(string) {
           const utf8 = new TextEncoder().encode(string);
           const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
@@ -182,23 +182,23 @@ class App extends Component {
 
         <form onSubmit={this.handleSubmit_finalForm} method="POST" id='finalForm' className='hidden'>
 
-          <label for="finalCheck">Verification Code: {r}</label>
+          <label for="finalCheck">Verification Code: </label>
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 
           <label for="APIKEY_ID">APIKEY_ID:</label>
-          <input type="text" name="APIKEY_ID" placeholder="APIKEY_ID" disabled/> <br /><br />
+          <input type="text" name="APIKEY_ID" placeholder="APIKEY_ID"/> <br /><br />
 
           <label for="templateName">Template Name:</label>
-          <input type="text" name="templateName" placeholder="templateName" disabled/> <br /><br />
+          <input type="text" name="templateName" placeholder="templateName"/> <br /><br />
 
           <label for="QueryRange">Query Range:</label>
-          <input type="number" name="QueryRange" placeholder="QueryRange" disabled/> <br /><br />
+          <input type="number" name="QueryRange" placeholder="QueryRange"/> <br /><br />
 
           <label for="campaignID">Campaign ID:</label>
-          <input type="text" name="campaignID" placeholder="campaignID" disabled/> <br /><br />
+          <input type="text" name="campaignID" placeholder="campaignID"/> <br /><br />
 
           <label for="XApiKey">X-Api-Key:</label>
-          <input type="text" name="XApiKey" placeholder="X-Api-Key" disabled/> <br /><br />
+          <input type="text" name="XApiKey" placeholder="X-Api-Key"/> <br /><br />
 
           <button type="submit">Submit</button>
         </form>

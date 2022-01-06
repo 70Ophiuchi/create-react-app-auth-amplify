@@ -67,7 +67,7 @@ class App extends Component {
   
     const response = await fetch("https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL", {
       method: "POST",
-      headers: {"Content-Type": "application/json", "X-Api-Key": json['X-Api-Key']},
+      headers: {"Content-Type": "application/json", "X-Api-Key": json['XApiKey']},
       body: json,
     })
       .then(response => {

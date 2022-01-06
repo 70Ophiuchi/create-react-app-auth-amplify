@@ -76,7 +76,7 @@ class App extends Component {
         console.log(data)
       })
       .catch(error => {
-        console.log(error)
+        alert(error)
       })
     window.location.href = window.location.href;
     }

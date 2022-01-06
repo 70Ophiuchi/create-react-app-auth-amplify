@@ -76,6 +76,7 @@ class App extends Component {
         return response.json()
       }).then(function (data){
         console.log(data)
+        alert(data)
       })
       .catch(error => {
         alert("Request Failed: " + error)

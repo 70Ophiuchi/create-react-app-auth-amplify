@@ -64,7 +64,7 @@ class App extends Component {
     formdata.forEach(function(value, prop){
       json[prop] = value
     })
-  
+    console.log(json)
     const response = await fetch("https://gf40yyred9.execute-api.eu-central-1.amazonaws.com/default/SES_SEND_EMAIL", {
       method: "POST",
       headers: {"Content-Type": "application/json", "X-Api-Key": json['XApiKey']},

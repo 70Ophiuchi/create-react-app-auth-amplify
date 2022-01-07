@@ -46,7 +46,7 @@ class App extends Component {
             .join('');
           return hashHex;
         }
-        hash(data.campaignID).then((hex) => ff.firstChild.innerText = "Verification Code [ " + hex + " ]: ");
+        hash(data.campaignID).then((hex) => ff.firstChild.innerText = "Verification Code [ " + hex.slice(0, 10) + " ]: ");
 
       })
       .catch(error => {
@@ -80,7 +80,7 @@ class App extends Component {
       .catch(error => {
         alert("Request Failed: " + error)
       })
-    // window.location.href = window.location.href;
+    window.location.href = window.location.href;
     }
 	
     state = {
@@ -202,7 +202,7 @@ class App extends Component {
         </form>
 
         <form onSubmit={this.handleSubmit_finalForm} method="POST" id='finalForm' className='hidden'>
-          <h1>SEND EMAIL</h1>
+
           <label for="finalCheck">Verification Code: </label>
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 

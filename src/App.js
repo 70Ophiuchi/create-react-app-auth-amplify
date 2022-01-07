@@ -117,10 +117,10 @@ class App extends Component {
             'https://oasqpg9pr2.execute-api.eu-central-1.amazonaws.com/default/SES_CREATE_TEMPLATE',
             {
               method: 'POST',
-              body: {
+              body: JSON.stringify({
                 "name": document.getElementById("fileInput").value.split("\\")[2].split(".")[0],
-                "html": content
-              }
+                "html": content.toString()
+              })
             }
           )
       }

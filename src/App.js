@@ -97,23 +97,38 @@ class App extends Component {
 
     onFileUpload = () => {
     
-    const formData = new FormData();
+    // const formData = new FormData();
     
-    formData.append(
-      "myFile",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-    
-    console.log(this.state.selectedFile);
-    
-    fetch(
-			'https://ses-templates-eu.s3.amazonaws.com',
-			{
-				method: 'PUT',
-				body: formData
-			}
-		)
+    // formData.append(
+    //   "myFile",
+    //   this.state.selectedFile,
+    //   this.state.selectedFile.name
+    // );
+    if (file.type.match(textType)) {
+      var reader = new FileReader();
+      
+      reader.onload = function(e) {
+          var content = reader.result;
+          //Here the content has been read successfuly
+          fetch(
+            'https://ses-templates-eu.s3.amazonaws.com',
+            {
+              method: 'PUT',
+              body: JSON.stringify({
+                "name": document.getElementById("fileInput"),
+                "html": content
+              })
+            }
+          )
+      }
+      
+      reader.readAsText(file);	
+  } else {
+      fileDisplayArea.innerText = "File not supported!"
+  }
+   
+  console.log(this.state.selectedFile);
+
     };
     
     fileData = () => {
@@ -162,7 +177,7 @@ class App extends Component {
           RULES FOR NAMING HTML FILE: TemplateName-SubjectPart-TextPart
         </h4>
         <div>
-            <input type="file" onChange={this.onFileChange} />
+            <input type="file" onChange={this.onFileChange} id="fileInput" />
             <button onClick={this.onFileUpload}>
             Upload!
             </button>

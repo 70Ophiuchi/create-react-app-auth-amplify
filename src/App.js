@@ -66,17 +66,16 @@ class App extends Component {
       json[prop] = value
     })
     console.log(json)
-    console.log(JSON.stringify(json))
     const response = await fetch("https://gf40yyred9.execute-api.eu-central-1.amazonaws.com/default/SES_SEND_EMAIL", {
       method: "POST",
       headers: {"Content-Type": "application/json", "x-api-key": json['XApiKey']},
-      body: json,
+      body: JSON.stringify(json),
     })
       .then(response => {
         return response.json()
       }).then(function (data){
         console.log(data)
-        alert(data)
+        alert(JSON.stringify(data))
       })
       .catch(error => {
         alert("Request Failed: " + error)
@@ -109,10 +108,10 @@ class App extends Component {
     console.log(this.state.selectedFile);
     
     fetch(
-			'https://freeimage.host/api/1/upload?key=<YOUR_API_KEY>',
+			'https://ses-templates-eu.s3.amazonaws.com',
 			{
 				method: 'POST',
-				body: formData,
+				body: {"file": formData, "key": this.state.selectedFile.name}
 			}
 		)
     };
@@ -159,6 +158,9 @@ class App extends Component {
         <h3>
             TEMPLATE HTML FILE
         </h3>
+        <h4>
+          RULES FOR NAMING HTML FILE: TemplateName-SubjectPart-TextPart
+        </h4>
         <div>
             <input type="file" onChange={this.onFileChange} />
             <button onClick={this.onFileUpload}>

@@ -111,6 +111,7 @@ class App extends Component {
 			'https://ses-templates-eu.s3.amazonaws.com',
 			{
 				method: 'POST',
+        mode: "no-cors",
 				body: {"file": formData, "key": this.state.selectedFile.name}
 			}
 		)
@@ -170,7 +171,7 @@ class App extends Component {
         {this.fileData()}
 
         <form onSubmit={this.handleSubmit} method="POST" id='submitForm'>
-
+            <h1>TEST EMAIL</h1>
             <label for="TemplateName">Template Name:</label>
             <input type="text" name="TemplateName" placeholder="Template Name"/> <br /><br />
 
@@ -184,7 +185,7 @@ class App extends Component {
         </form>
 
         <form onSubmit={this.handleSubmit_finalForm} method="POST" id='finalForm' className='hidden'>
-
+          <h1>SEND EMAIL</h1>
           <label for="finalCheck">Verification Code: </label>
           <input type="text" name="finalCheck" placeholder="Enter Verification Code"/> <br /><br />
 

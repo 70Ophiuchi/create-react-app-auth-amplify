@@ -114,7 +114,7 @@ class App extends Component {
           var content = reader.result;
           //Here the content has been read successfuly
           fetch(
-            'https://ses-templates-eu.s3.amazonaws.com',
+            'https://oasqpg9pr2.execute-api.eu-central-1.amazonaws.com/default/SES_CREATE_TEMPLATE',
             {
               method: 'POST',
               body: {

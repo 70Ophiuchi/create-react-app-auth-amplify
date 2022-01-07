@@ -67,6 +67,7 @@ class App extends Component {
       json[prop] = value
     })
     console.log(json)
+    console.log(JSON.stringify(json))
     const response = await fetch("https://gf40yyred9.execute-api.eu-central-1.amazonaws.com/default/SES_SEND_EMAIL", {
       method: "POST",
       headers: {"Content-Type": "application/json", "x-api-key": json['XApiKey']},
@@ -81,7 +82,7 @@ class App extends Component {
       .catch(error => {
         alert("Request Failed: " + error)
       })
-    window.location.href = window.location.href;
+    // window.location.href = window.location.href;
     }
 	
     state = {

@@ -104,6 +104,9 @@ class App extends Component {
     //   this.state.selectedFile,
     //   this.state.selectedFile.name
     // );
+    var file = document.getElementById('fileInput').files[0]
+    var textType = /text.*/;
+      
     if (file.type.match(textType)) {
       var reader = new FileReader();
       
@@ -113,7 +116,7 @@ class App extends Component {
           fetch(
             'https://ses-templates-eu.s3.amazonaws.com',
             {
-              method: 'PUT',
+              method: 'POST',
               body: JSON.stringify({
                 "name": document.getElementById("fileInput"),
                 "html": content

@@ -123,6 +123,8 @@ class App extends Component {
               })
             }
           )
+          .then(response => alert(JSON.stringify(response)))
+          .catch(error => alert("error: " + error))
       }
       
       reader.readAsText(file);	

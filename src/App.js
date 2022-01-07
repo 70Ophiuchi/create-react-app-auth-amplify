@@ -117,10 +117,10 @@ class App extends Component {
             'https://ses-templates-eu.s3.amazonaws.com',
             {
               method: 'POST',
-              body: JSON.stringify({
-                "name": document.getElementById("fileInput"),
+              body: {
+                "name": document.getElementById("fileInput").value.split("\\")[2].split(".")[0],
                 "html": content
-              })
+              }
             }
           )
       }

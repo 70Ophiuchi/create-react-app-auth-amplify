@@ -46,9 +46,8 @@ class App extends Component {
             .join('');
           return hashHex;
         }
-        hash(data.campaignID).then((hex) => r = hex);
+        hash(data.campaignID).then((hex) => ff.firstChild.innerText = "Verification Code [ " + hex + " ]: ");
 
-        ff.firstChild.innerText = "Verification Code [ " + r + " ]: "
       })
       .catch(error => {
         alert("Request Failed: " + error)

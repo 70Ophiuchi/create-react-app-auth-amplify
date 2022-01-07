@@ -127,7 +127,7 @@ class App extends Component {
       
       reader.readAsText(file);	
   } else {
-      fileDisplayArea.innerText = "File not supported!"
+      alert("File not supported!")
   }
    
   console.log(this.state.selectedFile);

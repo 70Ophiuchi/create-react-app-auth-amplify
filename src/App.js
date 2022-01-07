@@ -110,9 +110,8 @@ class App extends Component {
     fetch(
 			'https://ses-templates-eu.s3.amazonaws.com',
 			{
-				method: 'POST',
-        mode: "no-cors",
-				body: {"file": formData, "key": this.state.selectedFile.name}
+				method: 'PUT',
+				body: formData
 			}
 		)
     };

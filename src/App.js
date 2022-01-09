@@ -21,7 +21,7 @@ class App extends Component {
   
     const formBody = Object.keys(json).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(json[key])).join('&')
   
-    const response = await fetch("https://qqrpo8v6n6.execute-api.eu-central-1.amazonaws.com/default/SES_TEST_EMAIL", {
+    const response = await fetch("https://n8enid68o0.execute-api.us-east-2.amazonaws.com/default/SES_TEST_EMAIL", {
       method: "POST",
       headers: {"Content-Type": "application/x-www-form-urlencoded"},
       body: formBody,
@@ -66,7 +66,7 @@ class App extends Component {
       json[prop] = value
     })
     console.log(json)
-    const response = await fetch("https://gf40yyred9.execute-api.eu-central-1.amazonaws.com/default/SES_SEND_EMAIL", {
+    const response = await fetch("https://2havlsef3d.execute-api.us-east-2.amazonaws.com/default/SES_SEND_EMAIL", {
       method: "POST",
       headers: {"Content-Type": "application/json", "x-api-key": json['XApiKey']},
       body: JSON.stringify(json),
@@ -114,7 +114,7 @@ class App extends Component {
           var content = reader.result;
           //Here the content has been read successfuly
           fetch(
-            'https://oasqpg9pr2.execute-api.eu-central-1.amazonaws.com/default/SES_CREATE_TEMPLATE',
+            'https://ep8eiqo7k6.execute-api.us-east-2.amazonaws.com/default/CREATE_SES_TEMPLATE',
             {
               method: 'POST',
               body: JSON.stringify({
